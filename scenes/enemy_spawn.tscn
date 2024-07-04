@@ -1,9 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://lx05f6t872e7"]
 
-[ext_resource type="Script" path="res://enemy_spawn.gd" id="1_05ryi"]
+[ext_resource type="Script" path="res://scenes/enemy_spawn.gd" id="1_r0se6"]
 
 [node name="EnemySpawn" type="Node2D"]
-script = ExtResource("1_05ryi")
+script = ExtResource("1_r0se6")
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(360, -50)
