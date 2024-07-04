@@ -1,0 +1,72 @@
+[gd_scene load_steps=12 format=3 uid="uid://7w6nyx8lfy0n"]
+
+[ext_resource type="Texture2D" uid="uid://dgua6ot0f626w" path="res://assets/enemies/goblin_dead_anim_f0.png" id="1_sd0e7"]
+[ext_resource type="Texture2D" uid="uid://dy3a40q8yhmct" path="res://assets/enemies/goblin_idle_anim_f0.png" id="2_us6t4"]
+[ext_resource type="Texture2D" uid="uid://b0c44vd1ma8em" path="res://assets/enemies/goblin_idle_anim_f1.png" id="3_d44ou"]
+[ext_resource type="Texture2D" uid="uid://cj3415e5hi251" path="res://assets/enemies/goblin_idle_anim_f2.png" id="4_xplrp"]
+[ext_resource type="Texture2D" uid="uid://bdc4yb12wyuio" path="res://assets/enemies/goblin_idle_anim_f3.png" id="5_dpqeg"]
+[ext_resource type="Texture2D" uid="uid://hjm4m7xrld6k" path="res://assets/enemies/goblin_run_anim_f0.png" id="6_aydr8"]
+[ext_resource type="Texture2D" uid="uid://5n5tq2h5nyfe" path="res://assets/enemies/goblin_run_anim_f1.png" id="7_ticfq"]
+[ext_resource type="Texture2D" uid="uid://cu8fld1awpw6l" path="res://assets/enemies/goblin_run_anim_f2.png" id="8_kalfq"]
+[ext_resource type="Texture2D" uid="uid://ibrvfawuep77" path="res://assets/enemies/goblin_run_anim_f3.png" id="9_xo0wk"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lae8l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_sd0e7")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_us6t4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_d44ou")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_xplrp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_dpqeg")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_aydr8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ticfq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_kalfq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_xo0wk")
+}],
+"loop": true,
+"name": &"run",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sqha2"]
+radius = 5.25
+
+[node name="Goblin" type="CharacterBody2D"]
+scale = Vector2(4, 4)
+collision_layer = 4
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_lae8l")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.75, 2.5)
+shape = SubResource("CircleShape2D_sqha2")

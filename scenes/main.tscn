@@ -1,10 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://c4vm7s1y24iht"]
+[gd_scene load_steps=4 format=3 uid="uid://c4vm7s1y24iht"]
 
 [ext_resource type="PackedScene" uid="uid://b44j71q8xffbh" path="res://scenes/world.tscn" id="1_skyka"]
 [ext_resource type="PackedScene" uid="uid://cyosugf54xh26" path="res://scenes/player.tscn" id="2_ieogj"]
+[ext_resource type="PackedScene" uid="uid://lx05f6t872e7" path="res://enemy_spawn.tscn" id="3_6tle2"]
 
 [node name="Main" type="Node"]
 
 [node name="TileMap" parent="." instance=ExtResource("1_skyka")]
 
 [node name="Player" parent="." instance=ExtResource("2_ieogj")]
+
+[node name="EnemySpawn" parent="." instance=ExtResource("3_6tle2")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(402, 408)
+zoom = Vector2(0.75, 0.75)
