@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4vm7s1y24iht"]
+
+[ext_resource type="PackedScene" uid="uid://b44j71q8xffbh" path="res://scenes/world.tscn" id="1_skyka"]
+[ext_resource type="PackedScene" uid="uid://cyosugf54xh26" path="res://scenes/player.tscn" id="2_ieogj"]
+
+[node name="Main" type="Node"]
+
+[node name="TileMap" parent="." instance=ExtResource("1_skyka")]
+
+[node name="Player" parent="." instance=ExtResource("2_ieogj")]
