@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c4vm7s1y24iht"]
+[gd_scene load_steps=8 format=3 uid="uid://c4vm7s1y24iht"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_obtan"]
 [ext_resource type="PackedScene" uid="uid://b44j71q8xffbh" path="res://scenes/world.tscn" id="1_skyka"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://lx05f6t872e7" path="res://scenes/enemy_spawn.tscn" id="3_6tle2"]
 [ext_resource type="Script" path="res://scenes/BulletManager.gd" id="4_dkggc"]
 [ext_resource type="PackedScene" uid="uid://bqd8bggc8mwal" path="res://scenes/bullet.tscn" id="5_ix1qk"]
+[ext_resource type="PackedScene" uid="uid://hw7d7rvcwqd8" path="res://scenes/hud.tscn" id="7_7wvxv"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_obtan")
@@ -20,9 +21,9 @@ bullet_scene = ExtResource("5_ix1qk")
 
 [node name="EnemySpawn" parent="." instance=ExtResource("3_6tle2")]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(402, 408)
-zoom = Vector2(0.75, 0.75)
+[node name="HUD" parent="." instance=ExtResource("7_7wvxv")]
+offset = Vector2(0, 816)
+transform = Transform2D(1, 0, 0, 1, 0, 816)
 
 [connection signal="shoot" from="Player" to="BulletManager" method="_on_player_shoot"]
 [connection signal="hit_p" from="EnemySpawn" to="." method="_on_enemy_spawn_hit_p"]
