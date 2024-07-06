@@ -4,7 +4,7 @@ extends Node2D
 
 signal hit_p
 
-var goblin_scene := preload("res://goblin.tscn")
+var goblin_scene := preload("res://scenes/goblin.tscn")
 var spawn_points := []
 
 

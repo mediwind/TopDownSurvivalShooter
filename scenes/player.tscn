@@ -258,4 +258,14 @@ shape = SubResource("CircleShape2D_evy4v")
 
 [node name="ShootTimer" type="Timer" parent="."]
 
+[node name="BoostTimer" type="Timer" parent="."]
+wait_time = 6.0
+one_shot = true
+
+[node name="FastFireTimer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+
 [connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
+[connection signal="timeout" from="BoostTimer" to="." method="_on_boost_timer_timeout"]
+[connection signal="timeout" from="FastFireTimer" to="." method="_on_fast_fire_timer_timeout"]

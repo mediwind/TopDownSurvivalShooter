@@ -2,16 +2,22 @@ extends CharacterBody2D
 
 signal shoot
 
+const START_SPEED : int = 200
+const BOOST_SPEED : int = 400
+const NORMAL_SHOT : float = 0.5
+const FAST_SHOT : float = 0.1
+
 var speed : int
 var can_shoot : bool
 var screen_size : Vector2
 
 
 func _ready():
+	can_shoot = true
 	screen_size = get_viewport_rect().size
 	position = screen_size / 2
-	speed = 200
-	can_shoot = true
+	speed = START_SPEED
+	$ShootTimer.wait_time = NORMAL_SHOT
 
 
 func get_input():
@@ -50,5 +56,23 @@ func _physics_process(_delta):
 		$AnimatedSprite2D.frame = 1
 
 
+func boost():
+	$BoostTimer.start()
+	speed = BOOST_SPEED
+
+
+func quick_fire():
+	$FastFireTimer.start()
+	$ShootTimer.wait_time = FAST_SHOT
+
+
 func _on_shoot_timer_timeout():
 	can_shoot = true
+
+
+func _on_boost_timer_timeout():
+	speed = START_SPEED
+
+
+func _on_fast_fire_timer_timeout():
+	$ShootTimer.wait_time = NORMAL_SHOT
