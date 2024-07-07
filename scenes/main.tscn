@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c4vm7s1y24iht"]
+[gd_scene load_steps=9 format=3 uid="uid://c4vm7s1y24iht"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_obtan"]
 [ext_resource type="PackedScene" uid="uid://b44j71q8xffbh" path="res://scenes/world.tscn" id="1_skyka"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scenes/BulletManager.gd" id="4_dkggc"]
 [ext_resource type="PackedScene" uid="uid://bqd8bggc8mwal" path="res://scenes/bullet.tscn" id="5_ix1qk"]
 [ext_resource type="PackedScene" uid="uid://hw7d7rvcwqd8" path="res://scenes/hud.tscn" id="7_7wvxv"]
+[ext_resource type="PackedScene" uid="uid://dmoriikrg6x33" path="res://scenes/game_over.tscn" id="8_14q6d"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_obtan")
@@ -21,9 +22,22 @@ bullet_scene = ExtResource("5_ix1qk")
 
 [node name="EnemySpawn" parent="." instance=ExtResource("3_6tle2")]
 
+[node name="WaveOverTimer" type="Timer" parent="."]
+process_mode = 2
+one_shot = true
+
+[node name="RestartTimer" type="Timer" parent="."]
+process_mode = 2
+one_shot = true
+
 [node name="HUD" parent="." instance=ExtResource("7_7wvxv")]
 offset = Vector2(0, 816)
 transform = Transform2D(1, 0, 0, 1, 0, 816)
 
+[node name="GameOver" parent="." instance=ExtResource("8_14q6d")]
+process_mode = 2
+
 [connection signal="shoot" from="Player" to="BulletManager" method="_on_player_shoot"]
 [connection signal="hit_p" from="EnemySpawn" to="." method="_on_enemy_spawn_hit_p"]
+[connection signal="timeout" from="WaveOverTimer" to="." method="_on_wave_over_timer_timeout"]
+[connection signal="timeout" from="RestartTimer" to="." method="_on_restrat_timer_timeout"]
